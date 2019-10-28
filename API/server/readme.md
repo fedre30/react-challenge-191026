@@ -26,7 +26,7 @@
         - foreign key
     
 * rate
-    - note de l'utilsateur / 20
+    - note de l'utilsateur / 20 données par les autres utilisateur après réalisation du projet
         - int
     
 * password
@@ -73,6 +73,9 @@
  * id_skills
     - unique identifiant de la compétence
       - int
+ * rate 
+    - note / 20 donnée par le utilisateur sur la compétence
+        - int 
 
 
 
