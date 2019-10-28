@@ -16,7 +16,9 @@
 * email
     - adresse email de l'utilisateur
         - varchar 150
-        
+* reference_link 
+    - lien de référence de l'utilisateur (git, dribble, site perso ...)
+        - varchar 160     
 * cursus
     - cursus de l'utilisateur
         - longtext
