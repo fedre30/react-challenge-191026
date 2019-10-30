@@ -22,7 +22,15 @@ class UserControllerGetter extends AbstractController
     {
         $this->em = $entityManager;
     }
-
+    /**
+     * @Route("/name", name="app_user_name", methods={"GET"})
+     */
+    function getUserName(){
+        $query = $this->em->createQuery('
+                  SELECT u.name from App\Entity\User u ');
+        $result = $query->execute();
+        return $this->json($result);
+    }
     /**
      * @Route("/{user}", name="app_user_index", methods={"GET"})
      */
@@ -37,14 +45,6 @@ class UserControllerGetter extends AbstractController
         return $this->json($result);
     }
 
-    /**
-     * @Route("/name", name="app_user_name", methods={"GET"})
-     */
-    function getUserName(){
-        $query = $this->em->createQuery('
-                  SELECT u.name from App\Entity\User u ');
-        $result = $query->execute();
-        return $this->json($result);
-    }
+
 
 }
