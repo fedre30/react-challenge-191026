@@ -32,4 +32,18 @@ class UserControllerGetter extends AbstractController
         $result = $query->execute();
         return $this->json($result);
     }
+
+    /**
+     * @Route("/{user}", name="app_user_index", methods={"GET"})
+     */
+
+    function findUserInformation($user){
+        $query = $this->em->createQuery("
+                  SELECT u.name, u.firstname, u.nickname, u.email, u.referenceLink, u.rate, u.image
+                  from App\Entity\User u 
+                  WHERE u.name = :user");
+        $query->setParameter('user',$user);
+        $result = $query->execute();
+        return $this->json($result);
+    }
 }
