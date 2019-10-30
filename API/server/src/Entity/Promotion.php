@@ -31,7 +31,7 @@ class Promotion
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="years", type="date", nullable=false)
+     * @ORM\Column(name="years", type="integer", nullable=false)
      */
     private $years;
 

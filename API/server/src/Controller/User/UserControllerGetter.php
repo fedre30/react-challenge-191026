@@ -47,7 +47,7 @@ class UserControllerGetter extends AbstractController
     }
 
     /**
-     * @Route("/{user}/skills", name="app_user_skills", methods="{GET}")
+     * @Route("/{user}/skills", name="app_user_skills", methods={"GET"})
      */
 
     function findUserSkills($user){
@@ -66,5 +66,22 @@ class UserControllerGetter extends AbstractController
         return $this->json($result);
     }
 
+    /**
+     * @Route("/{user}/promotion", name="app_user_promotion", methods={"GET"})
+     */
+
+    public function findUserPromotion($user){
+        $query = $this->em->createQuery('
+                select p.name, p.years
+                from \App\Entity\Promotion p
+                join \App\Entity\User u
+                where u.idPromotion = p.id
+                    and u.name = :user
+        ');
+        $query->setParameter('user',$user);
+        $result = $query->execute();
+
+        return $this->json($result);
+    }
 
 }
