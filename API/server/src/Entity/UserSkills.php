@@ -42,5 +42,46 @@ class UserSkills
      */
     private $rate;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getIdUser(): ?int
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(int $idUser): self
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    public function getIdSkills(): ?int
+    {
+        return $this->idSkills;
+    }
+
+    public function setIdSkills(int $idSkills): self
+    {
+        $this->idSkills = $idSkills;
+
+        return $this;
+    }
+
+    public function getRate(): ?int
+    {
+        return $this->rate;
+    }
+
+    public function setRate(int $rate): self
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
 
 }

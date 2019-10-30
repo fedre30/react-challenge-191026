@@ -35,5 +35,34 @@ class Promotion
      */
     private $years;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getYears(): ?\DateTimeInterface
+    {
+        return $this->years;
+    }
+
+    public function setYears(\DateTimeInterface $years): self
+    {
+        $this->years = $years;
+
+        return $this;
+    }
+
 
 }
