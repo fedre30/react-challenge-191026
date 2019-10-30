@@ -21,12 +21,7 @@
         - varchar 160     
 * cursus
     - cursus de l'utilisateur
-        - longtext
-        
-* id_user_skills
-    - compétence de l'utilisateur
-        - foreign key
-    
+        - longtext    
 * rate
     - note de l'utilsateur / 20 données par les autres utilisateur après réalisation du projet
         - int
