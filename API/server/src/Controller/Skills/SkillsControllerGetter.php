@@ -11,7 +11,6 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class SkillsControllerGetter
  * @package App\Controller\Skills
- * @Route("/skills", name="app_skills", methods="{GET}")
  */
 
 class SkillsControllerGetter extends AbstractController
@@ -24,7 +23,7 @@ class SkillsControllerGetter extends AbstractController
     }
 
     /**
-     * @Route("/name", name="app_skills_name", methods={"GET"})
+     * @Route("/skills", name="app_skills_index", methods={"GET"})
      */
     public function getSkillsName(){
         $query = $this->em->createQuery("select s.name,s.masterise from \App\Entity\Skills s");
