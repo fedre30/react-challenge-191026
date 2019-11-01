@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * Promotion
@@ -30,9 +29,9 @@ class Promotion
     private $name;
 
     /**
-     * @var \int
+     * @var \DateTime
      *
-     * @ORM\Column(name="years", type="integer", nullable=false)
+     * @ORM\Column(name="years", type="date", nullable=false)
      */
     private $years;
 
@@ -53,16 +52,17 @@ class Promotion
         return $this;
     }
 
-    public function getYears(): int
+    public function getYears(): ?\DateTimeInterface
     {
         return $this->years;
     }
 
-    public function setYears(int $years): self
+    public function setYears(\DateTimeInterface $years): self
     {
         $this->years = $years;
 
         return $this;
     }
+
 
 }
