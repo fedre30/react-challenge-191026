@@ -25,10 +25,8 @@ class PromotionControllerSetter extends AbstractController
      * @return JsonResponseAlias
      */
     public function AddPromotion(Request $request, EntityManagerInterface $em){
-
         $promotionName = $request->query->get('name');
         $promotionYear = $request->query->get('year');
-
         $promotion = new Promotion();
         $promotion->setName($promotionName);
         $promotion->setYears(intval($promotionYear));
