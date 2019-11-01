@@ -6,8 +6,13 @@ namespace App\Controller\Promotion;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class PromotionControllerGetter
+ * @package App\Controller\Promotion
+ */
 class PromotionControllerGetter extends AbstractController
 {
     private $em;
@@ -18,7 +23,8 @@ class PromotionControllerGetter extends AbstractController
     }
 
     /**
-     * @Route("/promotion", name="app_promotion_index", methods={"GET"})
+     * @Route("/promotion/informations", name="_information", methods={"GET"})
+     * @return JsonResponse
      */
     function index(){
         $query = $this->em->createQuery('Select p.name, p.years from \App\Entity\Promotion p ');
