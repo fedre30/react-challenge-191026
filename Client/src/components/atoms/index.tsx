@@ -1,3 +1,4 @@
+import { Container } from "./container";
 import { TextInput } from "./input";
 
-export { TextInput };
+export { Container, TextInput };
