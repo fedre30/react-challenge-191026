@@ -59,7 +59,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="reference_link", type="string", length=160, nullable=false)
+     * @ORM\Column(name="reference_link", type="string", length=160, nullable=true)
      */
     private $referenceLink;
 

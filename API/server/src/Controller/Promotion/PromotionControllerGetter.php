@@ -23,7 +23,7 @@ class PromotionControllerGetter extends AbstractController
     }
 
     /**
-     * @Route("/promotion/informations", name="_information", methods={"GET"})
+     * @Route("/promotion/list", name="app_promotion_list", methods={"GET"})
      * @return JsonResponse
      */
     function index(){

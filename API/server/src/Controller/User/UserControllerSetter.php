@@ -22,7 +22,7 @@ class UserControllerSetter extends AbstractController
 {
     /**
      * @param Request $request
-     * @Route("/signin", name="app_user_signin", methods={"POST","GET"})
+     * @Route("/signup", name="app_user_signup", methods={"POST","GET"})
      * @return JsonResponse
      */
 

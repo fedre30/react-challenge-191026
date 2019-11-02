@@ -58,13 +58,13 @@
             maxlength: 150
             name: email
             
-        reference link:
+        reference link: (optional)
             type: text
             minlength: 2
             maxlength: 160
             name: linkref
             
-        cursus:
+        cursus: 
             type: longtext
             minlength: 10
             name: cursus
