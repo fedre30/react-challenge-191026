@@ -4,6 +4,7 @@
 namespace App\Controller\User;
 
 
+use App\Entity\Promotion;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,6 +27,11 @@ class UserControllerSetter extends AbstractController
      */
 
     public function addUser(Request $request, EntityManagerInterface $em){
+        // Entity Instance
+        $promotion = new Promotion();
+        $user = new User();
+
+        // Get Value Form Post Form
         $name= $request->query->get('name');
         $nickname= $request->query->get('nickname');
         $firstname =$request->query->get('firstname');
@@ -35,7 +41,32 @@ class UserControllerSetter extends AbstractController
         $cursus = $request->query->get('cursus');
         $userPromotion =$request->query->get('user_promotion') ;
 
-        $user = new User();
+        //If promotion is not empty, and exist in db, get the id and set foreign key
+        // If promotion is not empty, and doesn't exist, insert the new value in db, get the id, and set foreign key
+        // else: do nothing
+        if(!empty($userPromotion)){
+            $query = $em->createQuery('select p.id from \App\Entity\Promotion p where
+             CONCAT(p.name, p.years)= :promotion
+        ');
+
+            $query->setParameter("promotion",str_replace(' ','',$userPromotion));
+            $result = $query->execute();
+            if(empty($result)){
+                preg_match_all('/(?<![0-9])[0-9]{4}(?![0-9])/', $userPromotion, $matches);
+                $years = intval(implode(...$matches));
+                preg_match_all('/\b[^\d\W]+\b/', $userPromotion, $matches);
+                $promotionName = implode(' ', ...$matches);
+                $promotion->setName($promotionName);
+                $promotion->setYears($years);
+                $em->persist($promotion);
+                $em->flush();
+            }
+            $promotionId = empty($result) ? $promotion->getId() : intval(implode(...$result));
+            $user->setIdPromotion($promotionId);
+        }
+
+        //Fill Entity Values
+
         $user->setName($name);
         $user->setFirstname($firstname);
         $user->setNickname($nickname);
@@ -44,11 +75,12 @@ class UserControllerSetter extends AbstractController
         $user->setCursus($cursus);
         $user->setReferenceLink($linkref);
 
+        //Add to DB
         $em->persist($user);
         $em->flush();
 
-        dd($user->getId());
 
+        //Return 200 status
         return new JsonResponse([
             'status' => "ok"
         ], JsonResponse::HTTP_CREATED);
