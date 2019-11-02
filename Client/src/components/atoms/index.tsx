@@ -1,5 +1,4 @@
-import React from "react";
+import { Container } from "./container";
+import { Input } from "./input";
 
-export const test = () => {
-  return <div></div>;
-};
+export { Container, Input };
