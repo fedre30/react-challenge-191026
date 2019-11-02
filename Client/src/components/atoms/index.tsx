@@ -1,5 +1,3 @@
-import React from "react";
+import { TextInput } from "./input";
 
-export const test = () => {
-  return <div></div>;
-};
+export { TextInput };
