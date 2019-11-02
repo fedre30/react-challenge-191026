@@ -66,14 +66,14 @@ class User
     /**
      * @var int
      *
-     * @ORM\Column(name="rate", type="integer", nullable=false)
+     * @ORM\Column(name="rate", type="integer", nullable=true)
      */
     private $rate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255, nullable=false)
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
 
@@ -87,7 +87,7 @@ class User
     /**
      * @var int
      *
-     * @ORM\Column(name="id_promotion", type="integer", nullable=false)
+     * @ORM\Column(name="id_promotion", type="integer", nullable=true)
      */
     private $idPromotion;
 

@@ -29,9 +29,9 @@ class Promotion
     private $name;
 
     /**
-     * @var \DateTime
+     * @var int
      *
-     * @ORM\Column(name="years", type="date", nullable=false)
+     * @ORM\Column(name="years", type="integer", nullable=false)
      */
     private $years;
 
@@ -52,12 +52,12 @@ class Promotion
         return $this;
     }
 
-    public function getYears(): ?\DateTimeInterface
+    public function getYears(): ?int
     {
         return $this->years;
     }
 
-    public function setYears(\DateTimeInterface $years): self
+    public function setYears(int $years): self
     {
         $this->years = $years;
 
