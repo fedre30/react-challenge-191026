@@ -10,8 +10,71 @@
     list all user name : /user/name
     list user's  skills : incomming
     list user's promotion: /user/{name}/promotion
-    user sign in : /signin 
+    user sign up : /signup
     
+## FORM RESTRINCTIONS
+### Promotion
+    years: 
+        type: int
+        minlength: 4
+        maxlength: 4
+        name: year
+    name:
+        type: text
+        minlength: 2
+        maxlength: 10
+        name: name
+### Skills
+    incomming
+### User
+    sign up form : 
+        name:
+            type: text
+            minlength: 2
+            maxlength: 60
+            name: name
+            
+        firstname:
+            type: text
+            minlength: 2
+            maxlength: 60
+            name: firstname
+            
+        nickname:
+            type: text
+            minlength: 2
+            maxlength: 60
+            name: nickname
+            
+        password:
+            type: text
+            minlength: 2
+            maxlength: 60
+            name: password
+            
+        email:
+            type: email
+            minlength: 2
+            maxlength: 150
+            name: email
+            
+        reference link:
+            type: text
+            minlength: 2
+            maxlength: 160
+            name: linkref
+            
+        cursus:
+            type: longtext
+            minlength: 10
+            name: cursus
+            
+        promotion:
+            type: text
+            minlength: 2
+            maxlength: 20
+            name: user_promotion
+            
 ## DATABASE STRUCTURE
 ### User
     ID
