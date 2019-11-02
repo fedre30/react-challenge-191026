@@ -23,7 +23,7 @@ class UserControllerGetter extends AbstractController
         $this->em = $entityManager;
     }
     /**
-     * @Route("/name", name="app_user_name", methods={"GET"})
+     * @Route("/name", name="_name", methods={"GET"})
      */
     function getUserName(){
         $query = $this->em->createQuery('
@@ -33,7 +33,7 @@ class UserControllerGetter extends AbstractController
     }
 
     /**
-     * @Route("/{user}", name="app_user_index", methods={"GET"})
+     * @Route("/{user}", name="_index", methods={"GET"})
      */
 
     function findUserInformation($user){
@@ -47,7 +47,7 @@ class UserControllerGetter extends AbstractController
     }
 
     /**
-     * @Route("/{user}/skills", name="app_user_skills", methods={"GET"})
+     * @Route("/{user}/skills", name="_skills", methods={"GET"})
      */
 
     function findUserSkills($user){
@@ -67,7 +67,7 @@ class UserControllerGetter extends AbstractController
     }
 
     /**
-     * @Route("/{user}/promotion", name="app_user_promotion", methods={"GET"})
+     * @Route("/{user}/promotion", name="_promotion", methods={"GET"})
      */
 
     public function findUserPromotion($user){
