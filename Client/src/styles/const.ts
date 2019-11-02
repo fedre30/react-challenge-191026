@@ -1,7 +1,8 @@
 export const color = {
   primary: "#000D33",
   lightGrey: "#F0F0F0",
-  grey: "#797979"
+  grey: "#797979",
+  background: "#FBFBFB"
 };
 
 export const font = {
@@ -17,6 +18,7 @@ export const font = {
 };
 
 export const space = {
+  xs: "0.5rem",
   sm: "1rem",
   md: "3rem",
   lg: "5rem",
