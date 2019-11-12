@@ -1,3 +1,4 @@
+export const reset = `
 html,
 body,
 div,
@@ -102,6 +103,7 @@ section {
 }
 body {
   line-height: 1;
+  font-family: "Roboto", sans-serif;
 }
 ol,
 ul {
@@ -122,3 +124,4 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+`;

@@ -1,6 +1,7 @@
 import React from "react";
-import { Input } from "components/atoms";
 import styled from "styled-components";
+
+import { Input } from "styles/atoms";
 import { space } from "styles/const";
 
 const BasicInformations = styled.div`
@@ -12,7 +13,6 @@ const BasicInformations = styled.div`
 
 export const Form = () => (
   <BasicInformations>
-    {" "}
     <Input label="Nom" placeholder="exemple : Te" required />
     <Input label="Prénom" placeholder="exemple : Marie" required />
     <Input

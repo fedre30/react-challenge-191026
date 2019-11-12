@@ -1,7 +1,8 @@
 import React from "react";
-import { Container } from "components/atoms";
-import { Form } from "components/organisms";
 import styled from "styled-components";
+
+import { Container } from "styles/atoms";
+import { Form } from "styles/organisms";
 import { space, font, color } from "styles/const";
 
 const Background = styled.div`

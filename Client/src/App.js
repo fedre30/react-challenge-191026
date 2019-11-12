@@ -1,11 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Home } from "../src/views/home";
-import { Profile } from "./views/profile";
 
-function App() {
+import { ResetGlobalStyle } from "styles";
+import { Home } from "views/home";
+import { Profile } from "views/profile";
+
+export const App = () => {
   return (
-    <div className="App">
+    <>
+      <ResetGlobalStyle />
       <Router>
         <Switch>
           <Route path="/profile">
@@ -16,8 +19,6 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </div>
+    </>
   );
-}
-
-export default App;
+};
