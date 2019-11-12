@@ -1,15 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Container } from "styles/atoms";
-import { Form } from "styles/organisms";
+import { Container } from "styles/layout/container";
 import { space, font, color } from "styles/const";
 
-const Background = styled.div`
-  width: 100%;
-  height: 100vh;
-  background: ${color.background};
-`;
+import { Form } from "./form";
+
 const Title = styled.h1`
   margin: ${space.sm} auto;
   text-transform: uppercase;
@@ -24,11 +20,9 @@ const Subtitle = styled.h2`
 `;
 
 export const Profile = () => (
-  <Background>
-    <Container>
-      <Title>Votre profile</Title>
-      <Subtitle>en toute simplicité</Subtitle>
-      <Form />
-    </Container>
-  </Background>
+  <Container>
+    <Title>Votre profile</Title>
+    <Subtitle>en toute simplicité</Subtitle>
+    <Form />
+  </Container>
 );

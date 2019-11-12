@@ -1,3 +1,4 @@
+import { color } from "styles/const";
 export const normalize = `
 
 html {
@@ -8,6 +9,7 @@ html {
 
 body {
   margin: 0;
+  background: ${color.background};
 }
 
 
@@ -98,6 +100,7 @@ textarea {
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
   margin: 0; /* 2 */
+  padding: 0;
 }
 
 /**
