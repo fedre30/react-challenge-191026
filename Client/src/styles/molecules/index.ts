@@ -1,3 +1,3 @@
-import { TextField } from "./form-field";
+import { TextField, TextAreaField } from "./form-field";
 
-export { TextField };
+export { TextField, TextAreaField };

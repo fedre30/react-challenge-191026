@@ -17,7 +17,7 @@ type InputProps = {
   type?: string;
   id?: string;
   placeholder?: string;
-  onChange?: (any) => void;
+  onChange: (any) => void;
   required?: boolean;
 };
 
