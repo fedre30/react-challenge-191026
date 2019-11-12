@@ -12,6 +12,9 @@ export const Home = () => (
         <li>
           <Link to="/profile">Profile</Link>
         </li>
+        <li>
+          <Link to="/list">Liste</Link>
+        </li>
       </ul>
     </nav>
   </>
