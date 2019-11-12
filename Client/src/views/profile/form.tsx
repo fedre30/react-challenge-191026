@@ -1,16 +1,27 @@
 import React from "react";
-
+import styled from "styled-components";
 import { TextField } from "styles/molecules";
 
+const FieldWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const Form = () => (
-  <>
-    <TextField label="Nom" placeholder="exemple : Te" required />
-    <TextField label="Prénom" placeholder="exemple : Marie" required />
-    <TextField
-      label="Adresse e-mail"
-      placeholder="exemple : exemple@mail.com"
-      required
-      type="email"
-    />
-  </>
+  <FieldWrapper>
+    <div>
+      <TextField label="Nom" placeholder="exemple : Te" required />
+    </div>
+    <div>
+      <TextField label="Prénom" placeholder="exemple : Marie" required />
+    </div>
+    <div>
+      <TextField
+        label="Adresse e-mail"
+        placeholder="exemple : exemple@mail.com"
+        required
+        type="email"
+      />
+    </div>
+  </FieldWrapper>
 );

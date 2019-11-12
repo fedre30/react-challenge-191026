@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import { rem } from "polished";
 
-import { color, font } from "styles/const";
+import { color } from "styles/const";
 
 const LabelStyle = styled.label`
   color: ${color.primary};
-  font-weight: ${font.weight.bold};
+  margin-bottom: ${rem(10)};
+  display: block;
 `;
 
 type LabelProps = {

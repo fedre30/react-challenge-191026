@@ -1,3 +1,4 @@
+import { color } from "styles/const";
 export const normalize = `
 
 html {
@@ -8,6 +9,7 @@ html {
 
 body {
   margin: 0;
+  background: ${color.background};
 }
 
 

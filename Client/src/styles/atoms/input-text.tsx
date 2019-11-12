@@ -4,29 +4,29 @@ import { rem } from "polished";
 
 import { color, font, space } from "styles/const";
 
-type InputProps = {
-  type?: string;
-  id?: string;
-  placeholder?: string;
-  onChange?: (any) => void;
-  label?: string;
-  required?: boolean;
-};
-
 const InputStyle = styled.input`
-  width: inherit;
-  height: ${rem(51)};
+  width: ${rem(305)};
+  height: ${rem(50)};
   border: 1px solid #f0f0f0;
   color: ${color.grey};
   font-weight: ${font.weight.italic};
   padding: 0 ${space.sm};
 `;
 
+type InputProps = {
+  type?: string;
+  id?: string;
+  placeholder?: string;
+  onChange?: (any) => void;
+  required?: boolean;
+};
+
 export const InputText = ({
   type = "text",
   id,
   placeholder,
-  onChange
+  onChange,
+  required
 }: InputProps) => (
   <>
     <InputStyle
@@ -34,6 +34,7 @@ export const InputText = ({
       id={id}
       placeholder={placeholder}
       onChange={onChange}
+      required={required}
     />
   </>
 );

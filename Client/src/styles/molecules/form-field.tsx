@@ -38,7 +38,6 @@ export type TextFieldProps = {
   label?: string;
   required?: boolean;
   type?: "text" | "email";
-
   onChange?: (any) => void;
   placeholder?: string;
 };
@@ -48,9 +47,15 @@ export const TextField = ({
   label,
   required,
   onChange,
-  type
+  type,
+  placeholder
 }: TextFieldProps) => (
   <FormField label={label} id={id} required={required}>
-    <InputText id={id} type={type || "text"} onChange={onChange} />
+    <InputText
+      id={id}
+      type={type || "text"}
+      onChange={onChange}
+      placeholder={placeholder}
+    />
   </FormField>
 );
