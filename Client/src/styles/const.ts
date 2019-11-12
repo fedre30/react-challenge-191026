@@ -1,8 +1,11 @@
+import { rem } from "polished";
+
 export const color = {
   primary: "#000D33",
   lightGrey: "#F0F0F0",
   grey: "#797979",
-  background: "#FBFBFB"
+  background: "#FBFBFB",
+  error: "#F24646"
 };
 
 export const font = {
@@ -18,9 +21,12 @@ export const font = {
 };
 
 export const space = {
-  xs: "0.5rem",
-  sm: "1rem",
-  md: "3rem",
-  lg: "5rem",
-  xl: "10rem"
+  base: rem(16),
+  xxs: rem(4),
+  xs: rem(8),
+  sm: rem(12),
+  md: rem(24),
+  lg: rem(32),
+  xl: rem(40),
+  xxl: rem(64)
 };

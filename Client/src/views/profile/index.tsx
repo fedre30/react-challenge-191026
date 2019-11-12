@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 import { Container } from "styles/atoms";
-import { Form } from "styles/organisms";
 import { space, font, color } from "styles/const";
+
+import { Form } from "./form";
 
 const Background = styled.div`
   width: 100%;

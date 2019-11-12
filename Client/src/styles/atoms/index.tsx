@@ -1,4 +1,5 @@
 import { Container } from "./container";
-import { Input } from "./input";
+import { InputText } from "./input-text";
+import { Label } from "./label";
 
-export { Container, Input };
+export { Container, InputText, Label };
