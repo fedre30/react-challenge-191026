@@ -31,4 +31,12 @@ class PromotionControllerGetter extends AbstractController
         $result = $query->execute();
         return $this->json($result);
     }
+
+    /**
+     * @Route("/test")
+     */
+    function test(){
+        $test = "test";
+        return $this->json($test);
+    }
 }
