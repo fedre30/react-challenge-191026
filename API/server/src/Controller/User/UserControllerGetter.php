@@ -66,6 +66,41 @@ class UserControllerGetter extends AbstractController
         return $this->json($result);
     }
 
+
+
+
+    /**
+     * @Route("/{user}/AddUserskills", name="_AddUserskills", methods={"GET"})
+     */
+
+    function AddUserSkills($user){
+        $query = $this->em->createQuery('
+                select s.name, s.masterise, us.rate 
+                from \App\Entity\Skills s
+                join \App\Entity\UserSkills us 
+                join \App\Entity\User u
+                where s.id = us.idSkills
+                    and u.id = us.idUser
+                    and u.name = :user
+                ');
+        $query->setParameter('user',$user);
+        $result = $query->execute();
+
+        return $this->json($result);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * @Route("/{user}/promotion", name="_promotion", methods={"GET"})
      */
