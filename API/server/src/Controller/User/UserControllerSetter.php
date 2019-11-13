@@ -95,4 +95,39 @@ class UserControllerSetter extends AbstractController
     {
         return $this->render("user_form.html.twig");
     }
+
+    /**
+     * @Route("/{user}/AddUserskills", name="_AddUserskills", methods={"POST"})
+     */
+
+    public function AddUserSkills($user){
+        // Get Value Form Post Form
+        $name= $request->query->get('name');
+        $nickname= $request->query->get('nickname');
+        $firstname =$request->query->get('firstname');
+        $password = password_hash($request->query->get('password'),PASSWORD_BCRYPT);
+        $email = $request->query->get('email');
+
+
+
+        $user->setName($name);
+        $user->setFirstname($firstname);
+        $user->setNickname($nickname);
+        $user->setPassword($password);
+        $user->setEmail($email);
+
+        $query = $this->em->createQuery('
+                select s.name, s.masterise, us.rate 
+                from \App\Entity\Skills s
+                join \App\Entity\UserSkills us 
+                join \App\Entity\User u
+                where s.id = us.idSkills
+                    and u.id = us.idUser
+                    and u.name = :user
+                ');
+        $query->setParameter('user',$user);
+        $result = $query->execute();
+
+        return $this->json($result);
+    }
 }
