@@ -95,4 +95,31 @@ class UserControllerSetter extends AbstractController
     {
         return $this->render("user_form.html.twig");
     }
+
+    /**
+     * @Route("/user/add/skill", name="app_user_add_skill")
+     */
+    public function userAddSkill(EntityManagerInterface $em){
+        // get form request
+        // get user from request
+        // check for user id
+        // get skill
+        // if skill already exist: get id
+        // else : add skill to database, and get id
+        // if user already have skill : return already have skill
+        // else : add user id and skill in User_skill table
+
+        return $this->json("in progress");
+
+
+    }
+
+    /**
+     * @return Response
+     * @Route("/skillform")
+     */
+
+    public function addSkillForm(){
+        return $this->render('user_skill_form.html.twig');
+    }
 }
