@@ -97,37 +97,29 @@ class UserControllerSetter extends AbstractController
     }
 
     /**
-     * @Route("/{user}/AddUserskills", name="_AddUserskills", methods={"POST"})
+     * @Route("/user/add/skill", name="app_user_add_skill")
+     */
+    public function userAddSkill(EntityManagerInterface $em){
+        // get form request
+        // get user from request
+        // check for user id
+        // get skill
+        // if skill already exist: get id
+        // else : add skill to database, and get id
+        // if user already have skill : return already have skill
+        // else : add user id and skill in User_skill table
+
+        return $this->json("in progress");
+
+
+    }
+
+    /**
+     * @return Response
+     * @Route("/skillform")
      */
 
-    public function AddUserSkills($user){
-        // Get Value Form Post Form
-        $name= $request->query->get('name');
-        $nickname= $request->query->get('nickname');
-        $firstname =$request->query->get('firstname');
-        $password = password_hash($request->query->get('password'),PASSWORD_BCRYPT);
-        $email = $request->query->get('email');
-
-
-
-        $user->setName($name);
-        $user->setFirstname($firstname);
-        $user->setNickname($nickname);
-        $user->setPassword($password);
-        $user->setEmail($email);
-
-        $query = $this->em->createQuery('
-                select s.name, s.masterise, us.rate 
-                from \App\Entity\Skills s
-                join \App\Entity\UserSkills us 
-                join \App\Entity\User u
-                where s.id = us.idSkills
-                    and u.id = us.idUser
-                    and u.name = :user
-                ');
-        $query->setParameter('user',$user);
-        $result = $query->execute();
-
-        return $this->json($result);
+    public function addSkillForm(){
+        return $this->render('user_skill_form.html.twig');
     }
 }
