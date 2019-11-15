@@ -28,7 +28,7 @@ services:
       PMA_PASSWORD: +Hetic2019+
 
   web:
-    build: D:/wamp64/www/react-project/API/server
+    build: /home/hetic/API/server
     container_name: tp_priou
     volumes:
       - ./server:/var/www/html/public
@@ -44,3 +44,5 @@ services:
 
 networks:
   tp_database:
+
+  

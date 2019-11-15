@@ -97,10 +97,14 @@ class UserControllerSetter extends AbstractController
     }
 
     /**
-     * @Route("/user/add/skill", name="app_user_add_skill")
+     * @Route("/user/add/skill", name="app_user_add_skill", methods={"POST","GET"})
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return JsonResponse
      */
-    public function userAddSkill(EntityManagerInterface $em){
-        // get form request
+
+
+    public function userAddSkill(Request $request, EntityManagerInterface $em){
         // get user from request
         // check for user id
         // get skill
