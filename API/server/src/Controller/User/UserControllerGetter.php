@@ -66,6 +66,23 @@ class UserControllerGetter extends AbstractController
         return $this->json($result);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * @Route("/{user}/promotion", name="_promotion", methods={"GET"})
      */

@@ -5,7 +5,9 @@ namespace App\Controller\User;
 
 
 use App\Entity\Promotion;
+use App\Entity\Skills;
 use App\Entity\User;
+use App\Entity\UserSkills;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -102,9 +104,13 @@ class UserControllerSetter extends AbstractController
      * @param EntityManagerInterface $em
      * @return JsonResponse
      */
-
-
     public function userAddSkill(Request $request, EntityManagerInterface $em){
+        $name= $request->query->get('name');
+        $user_new_skill = $request->query->get('user_new_skill');
+        $user = new User();
+        $skill = new Skills();
+        $skillUser = new UserSkills();
+        // get form request
         // get user from request
         // check for user id
         // get skill
