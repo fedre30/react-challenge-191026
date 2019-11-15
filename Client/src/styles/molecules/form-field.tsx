@@ -13,15 +13,17 @@ type IternalFormFieldProps = {
   required?: boolean;
   error?: string[] | string | null;
   helper?: string;
+  style?: React.CSSProperties;
 };
 
 const FormField = ({
   id,
   label,
   required,
-  children
+  children,
+  style
 }: PropsWithChildren<IternalFormFieldProps>) => (
-  <>
+  <div style={style}>
     {label ? (
       <Label htmlFor={id}>
         {label} {required ? <RequiredText>*</RequiredText> : null}
@@ -30,7 +32,7 @@ const FormField = ({
       <RequiredText>*</RequiredText>
     ) : null}
     {children}
-  </>
+  </div>
 );
 
 export type TextFieldProps = {

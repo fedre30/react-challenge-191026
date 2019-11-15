@@ -4,7 +4,7 @@ export const color = {
   primary: "#000D33",
   lightGrey: "#F0F0F0",
   grey: "#797979",
-  background: "#FBFBFB",
+  background: "#F4F8F9",
   error: "#F24646"
 };
 

@@ -2,14 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { rem } from "polished";
 
-import { color, font, space } from "styles/const";
+import { color, space } from "styles/const";
 
 const InputStyle = styled.input`
   width: ${rem(305)};
   height: ${rem(50)};
   border: 1px solid #f0f0f0;
   color: ${color.grey};
-  font-weight: ${font.weight.italic};
   padding: 0 ${space.sm};
 `;
 
