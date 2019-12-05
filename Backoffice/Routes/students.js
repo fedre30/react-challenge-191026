@@ -21,14 +21,12 @@ router.get("/",(req,res)=>{
     });
 });
 
-
 // "/students/:id" see one student profile
 router.get("/:id",(req,res)=>{
     connection.query(`SELECT * from user where id=${req.params.id}`,(err,rows)=>{
         err ? res.json(err) : res.json(rows);
     });
 });
-
 
 // "/students/find/:name" search student by name
 router.get("/find/:name",(req,res)=>res.send(`Hello ${req.params.name}`));
