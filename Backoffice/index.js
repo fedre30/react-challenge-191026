@@ -132,3 +132,29 @@ const authenticate_user = (rows, pwd) =>{
  }
 
 
+/**
+ * LIST OF ROUTES 
+ *  "/" => home
+ *  "/*" => 404 not found
+ *  "/signup" => get: form | post: add user into db
+ *  "/login" => get: form | post: authentify the user and start session
+ *  "/promotions" => list all promotions
+ *  "/promotions/add" => get: form | post: add new promotion into db
+ *  "/students" => list all student
+ *  "/students/:id" => list all informations for 1 student
+ *  "/students/:id/skills" => list all skills for 1 student
+ *  "/students/:id/skills/add" => get: form | post: add a new skill to the user skills list
+ *  "/students/find/:name" => Search students by name
+ * 
+ *  @todo: 
+ *      "/administrateur" => list all admins
+ *      "/administrateur/:id" => list all information for 1 admin
+ *      "/students/:id/edit" => edit profile and add complementary informations
+ *      "/administrateur/:id/edit" => edit profile and add complementary informations
+ * 
+ *  limit adding promotions to admin role
+ *      "/skills" => list of all skills only for admin
+ *      "/skills/add" => add a new skill only for admin
+ *      "/matching" => do matching
+ *      "/students/find/skills/:category" find all student by category skill
+ */
