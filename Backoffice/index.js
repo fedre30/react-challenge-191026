@@ -9,6 +9,7 @@ import promotion  from './Routes/promotion';
 
 //DB connexion
 import connection from "./connection";
+import { connect } from 'http2';
 
 const app = express(); 
 
@@ -35,9 +36,27 @@ app.get("/*",(req,res)=>res.send("404 not found"));
 app.post("/signup",(req,res)=>{
     connection.query(`
         INSERT INTO user (name, firstname, nickname, password,email, cursus) VALUES 
-            ("${req.body.name}", "${req.body.firstname}", "${req.body.nickname}", "${Hasher.generate(req.body.password)}", "${req.body.email}", "${req.body.cursus}")
+            ("${req.body.name}", 
+                "${req.body.firstname}",
+                "${req.body.nickname}", 
+                "${Hasher.generate(req.body.password)}", 
+                "${req.body.email}",
+                "${req.body.cursus}")
     `,(err)=>{
         err ? console.log(err) : res.send("User successfully registered");
+    });
+
+    connection.query(`
+        UPDATE user set id_promotion = (
+            Select id from promotion 
+            where name = "${req.body.promotion_name}" AND 
+                years = "${req.body.promotion_year}"
+        ) where name = "${req.body.name}" AND
+                firstname = "${req.body.firstname}" AND
+                nickname = "${req.body.nickname}" AND
+                email ="${req.body.email}"
+    `,(err)=>{
+        err ?console.log(err) : console.log("correctly updated")
     });
 }); 
 
