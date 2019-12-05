@@ -54,7 +54,7 @@ app.post("/signup",(req,res)=>{
         Select * from user 
         where name = "${req.body.name}" AND
              firstname = "${req.body.firstname}" AND
-             nickname = "${req.body.nickname}" AND
+             nickname = "${req.body.nickname}" OR
              email ="${req.body.email}" 
     `,(err,rows)=>{
         !err && rows.length===0 
@@ -88,16 +88,7 @@ app.post("/signup",(req,res)=>{
     });
 }); 
 
-const authenticate_user = (rows, pwd) =>{
-   const data =  rows.map(row=>{
-        if(!Hasher.verify(pwd,row.password)){
-            return null;
-        }
-        return row
-    });
-    return data;
-}
-
+// "/login"
 app.post("/login", (req,res)=>{
     connection.query(`select * from user where email ="${req.body.email}"`,(err,rows)=>{
         let data = authenticate_user(rows,req.body.password)[0]
@@ -120,5 +111,24 @@ app.post("/login", (req,res)=>{
         }
     });
 });
+
+// HELPERS METHODS
+
+/**
+ * After sql query, loop the result
+ *  verify query password hash with request password
+ *  return single user information
+ * @param {Array} rows 
+ * @param {String} pwd 
+ */
+const authenticate_user = (rows, pwd) =>{
+    const data =  rows.map(row=>{
+         if(!Hasher.verify(pwd,row.password)){
+             return null;
+         }
+         return row
+     });
+     return data;
+ }
 
 
