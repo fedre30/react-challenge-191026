@@ -1,8 +1,8 @@
 import express from 'express';
+import expressSession from "express-session";
 import bodyParser from "body-parser";
 import reactViews from "express-react-views";
 import Hasher from "password-hash";
-
 //Router
 import students from "./Routes/students";
 import promotion  from './Routes/promotion';
@@ -14,6 +14,13 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(expressSession({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 }
+  }));
 
 app.set("views", __dirname + "/views");
 app.set("view engine", "jsx");
@@ -28,6 +35,8 @@ app.use("/promotions",promotion);
 app.get("/",(req,res)=>res.send(`Home page`));
 
 app.get("/signup",(req,res)=>res.render("Forms/signup"));
+
+app.get("/login",(req,res)=>res.render("Forms/login"));
 
 app.get("/*",(req,res)=>res.send("404 not found"));
 
@@ -77,7 +86,39 @@ app.post("/signup",(req,res)=>{
     
             : res.send("User Already Registered");
     });
-
 }); 
+
+const authenticate_user = (rows, pwd) =>{
+   const data =  rows.map(row=>{
+        if(!Hasher.verify(pwd,row.password)){
+            return null;
+        }
+        return row
+    });
+    return data;
+}
+
+app.post("/login", (req,res)=>{
+    connection.query(`select * from user where email ="${req.body.email}"`,(err,rows)=>{
+        let data = authenticate_user(rows,req.body.password)[0]
+        if(data){
+            req.session.userid = data.id;
+            req.session.username = data.name;
+            req.session.userfirstname = data.firstname;
+            req.session.usernickname = data.nickname;
+            req.session.useremail = data.email;
+            req.session.userrole = data.role;
+            if(data.role === "student"){
+                res.redirect(`/students/${data.id}`)
+            }
+            else if(data.role === "admin"){
+                res.send("hello admin");
+            }
+        }
+        else {
+            res.redirect("/login");
+        }
+    });
+});
 
 
