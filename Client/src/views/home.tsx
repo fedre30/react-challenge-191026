@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 export const Home = () => (
   <>
     <h1>This is a home</h1>
@@ -18,4 +19,4 @@ export const Home = () => (
       </ul>
     </nav>
   </>
-);
+)

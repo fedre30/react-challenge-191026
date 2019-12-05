@@ -4,6 +4,7 @@ import { ResetGlobalStyle } from "styles";
 import { Home } from "views/home";
 import { Profile } from "views/profile";
 import { List } from "views/list";
+import { Login } from "views/login";
 
 export const App = () => {
   return (
@@ -11,6 +12,9 @@ export const App = () => {
       <ResetGlobalStyle />
       <Router>
         <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
           <Route path="/profile">
             <Profile />
           </Route>
