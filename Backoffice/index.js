@@ -145,6 +145,7 @@ const authenticate_user = (rows, pwd) =>{
  *  "/students/:id/skills" => list all skills for 1 student
  *  "/students/:id/skills/add" => get: form | post: add a new skill to the user skills list
  *  "/students/find/:name" => Search students by name
+ *  "/students/find/skills/:category" find all student by category skill
  * 
  *  @todo: 
  *      "/administrateur" => list all admins
@@ -156,5 +157,5 @@ const authenticate_user = (rows, pwd) =>{
  *      "/skills" => list of all skills only for admin
  *      "/skills/add" => add a new skill only for admin
  *      "/matching" => do matching
- *      "/students/find/skills/:category" find all student by category skill
+ *      
  */
