@@ -4,7 +4,7 @@ RUN apk update && apk upgrade
 
 RUN apk add nodejs npm
 
-WORKDIR /usr/local/nginx/html
+WORKDIR /home/hetic/Backoffice
 
 COPY ./package.json .
 
