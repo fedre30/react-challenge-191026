@@ -4,7 +4,7 @@
   "description": "back office for student list which is a project done in hetic",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node --ext '.js,.jsx' index.js",
+    "start": "nodemon --exec babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rainald Durand",

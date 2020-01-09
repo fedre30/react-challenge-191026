@@ -60,7 +60,7 @@ router.get("/:id/skills",(req,res)=>{
 // student/:id/skills/add 
 // render studentSkillsAdd form
 router.get("/:id/skills/add",(req,res) => {
-    res.render("Forms/studentsSkillsAdd",{id: req.session.userid})
+    res.render("Forms/studentsSkillsAdd",{id: req.params.id})
 });
 
 // student/:id/skills/add  
@@ -71,7 +71,7 @@ router.get("/:id/skills/add",(req,res) => {
  * if is not, add the juncture
  */
 router.post("/:id/skills/add",(req,res)=>{
-   /* connection.query(`
+    connection.query(`
         Select name from skills where name = "${req.body.skill_name}"
     `,(err,rows)=>{
         !err && rows.length === 0 
@@ -81,7 +81,7 @@ router.post("/:id/skills/add",(req,res)=>{
                     console.log(`new skill ${req.body.skill_name} correctly add to db`)
               })
             : null;
-    });*/
+    });
 
     connection.query(`
         Select s.name as skill_name, u.name, us.id_user, us.id_skills from skills as s 

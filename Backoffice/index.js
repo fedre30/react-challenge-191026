@@ -38,6 +38,20 @@ app.get("/signup",(req,res)=>res.render("Forms/signup"));
 
 app.get("/login",(req,res)=>res.render("Forms/login"));
 
+app.get("/match",(req,res)=>{
+    connection.query(`
+    select u.name, u.firstname, GROUP_CONCAT(s.category) as skill_category, GROUP_CONCAT(s.name) as skill_name
+    from user as u
+        inner join user_skills us on us.id_user = u.id
+        inner join skills s on s.id = us.id_skills
+        GROUP BY u.id
+        ORDER BY RAND()
+    `,(err,rows)=>{
+        res.send(match(rows,3));
+    })
+});
+
+
 app.get("/*",(req,res)=>res.send("404 not found"));
 
 //POST METHODS
@@ -100,17 +114,18 @@ app.post("/login", (req,res)=>{
             req.session.useremail = data.email;
             req.session.userrole = data.role;
             if(data.role === "student"){
-                res.redirect(`/students/${data.id}`)
+                res.json(data.role)
             }
             else if(data.role === "admin"){
-                res.send("hello admin");
+                res.json(data.role);
             }
         }
         else {
-            res.redirect("/login");
+            res.json("authentification failed")
         }
     });
 });
+
 
 // HELPERS METHODS
 
@@ -123,13 +138,56 @@ app.post("/login", (req,res)=>{
  */
 const authenticate_user = (rows, pwd) =>{
     const data =  rows.map(row=>{
-         if(!Hasher.verify(pwd,row.password)){
-             return null;
-         }
-         return row
-     });
-     return data;
- }
+        if(!Hasher.verify(pwd,row.password)){
+            return null;
+        }
+        return row
+    });
+    return data;
+}
+
+/**
+ * => array of user
+ *      loop to find attribute
+ *      
+ * @param {Array} rows 
+ */
+
+const match = (students, grpl) => {
+    const groups = [];
+    const nbgroup = Math.ceil(students.length/grpl);
+    let i = 2;
+
+    const users = students.map(student => {
+        let count = {};
+        let category = student.skill_category.split(",")
+        category.forEach(cat => {
+            count[cat] = count[cat] ? count[cat] + 1 : 1;
+        });
+        student["role"] = Object.keys(count).reduce((a, b) => {
+            let role = null;
+            count[a] > count[b] //if
+            ? role = a //do
+            : (     //else 
+                count[a] == count[b] //if
+                    ? role = "hybrid" //do 
+                    : role = b //else
+              )
+            ;
+            return role;
+        }); 
+       return student;
+    });
+
+    while (groups.length < nbgroup) {
+        groups.length === 0 
+        ? groups.push(users.slice(0,grpl))
+        : groups.push(users.slice(grpl*(i-1), grpl*i)) &&  i++
+        ;
+    }
+    return groups
+}
+
 
 
 /**
@@ -148,10 +206,6 @@ const authenticate_user = (rows, pwd) =>{
  *  "/students/find/skills/:category" find all student by category skill
  * 
  *  @todo: 
- *      "/administrateur" => list all admins
- *      "/administrateur/:id" => list all information for 1 admin
- *      "/students/:id/edit" => edit profile and add complementary informations
- *      "/administrateur/:id/edit" => edit profile and add complementary informations
  * 
  *  limit adding promotions to admin role
  *      "/skills" => list of all skills only for admin

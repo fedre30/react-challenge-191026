@@ -3,7 +3,7 @@ import connection from "../connection";
 
 const router = express.Router();
 
-// "/promotions" see all promotion
+// "/skills" see all promotion
 router.get("/", (req,res)=>{
     connection.query("select * from promotion",(err,rows)=>{
         err ? res.json(err) : res.json(rows);
@@ -11,7 +11,7 @@ router.get("/", (req,res)=>{
 });
 
 router.get("/add",(req,res)=>{
-    res.render("Forms/promotions"); 
+    res.render("Forms/skills"); 
 });
 
 router.post("/add",(req,res)=>{ 
