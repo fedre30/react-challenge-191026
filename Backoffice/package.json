@@ -1,0 +1,29 @@
+{
+  "name": "apistudent",
+  "version": "1.0.0",
+  "description": "back office for student list which is a project done in hetic",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rainald Durand",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/node": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-react-views": "^0.11.0",
+    "express-session": "^1.17.0",
+    "mysql": "^2.17.1",
+    "password-hash": "^1.2.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
