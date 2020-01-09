@@ -3,8 +3,6 @@ version: "3"
 services: 
     database:
         image: mysql:5.6
-        volumes:
-            - tp_priou_db
         environment:
           MYSQL_ROOT_PASSWORD: myrootpassword
           MYSQL_DATABASE: tp_priou
@@ -40,5 +38,3 @@ services:
             - tp_priou
 networks:
     tp_priou:
-volumes:
-    tp_priou_db:
